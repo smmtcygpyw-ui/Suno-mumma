@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Mumma ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
+</head>
+<body class="bg-scene-1">
+
+    <div id="particle-container" aria-hidden="true"></div>
+
+    <div class="music-player-container" id="musicPlayer">
+        <button class="music-btn" id="musicToggle" aria-label="Toggle Background Music">
+            <span class="music-icon">🎵</span>
+            <span class="music-status">Play Music</span>
+        </button>
+        <div class="music-wave" id="musicWave">
+            <span></span><span></span><span></span><span></span>
+        </div>
+        <audio id="bgAudio" loop preload="auto">
+            <source src="mom-song.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <section id="opening" class="section hero-section">
+        <div class="hero-card glass-panel">
+            <div class="doodle-star doodle-top-right">✨</div>
+            <div class="doodle-heart doodle-bottom-left">💖</div>
+            <h1 class="hero-title animate-bounce-soft">MUMMAAAAAA 🥺</h1>
+            <div class="hero-body">
+                <p class="subtitle">Ruko...</p>
+                <p class="subtitle highlight">Gussa mat hona please. 😭</p>
+                <p class="text-body">Maine aapke liye kuch banaya hai.</p>
+            </div>
+            <button class="btn btn-primary glow-effect" id="openBtn">
+                💌 Open Karo Na
+            </button>
+            <span class="tiny-note">Padori approved? Probably not. 😂</span>
+        </div>
+    </section>
+
+    <section id="disclaimer" class="section">
+        <div class="scrapbook-card warning-card scroll-reveal">
+            <div class="tape-strip top-tape"></div>
+            <div class="badge-warning">⚠️ IMPORTANT NOTICE ⚠️</div>
+            <h2>Is website mein ho sakta hai...</h2>
+            <ul class="disclaimer-list">
+                <li><span class="emoji">😂</span> Bakwaas</li>
+                <li><span class="emoji">🥺</span> Emotional drama</li>
+                <li><span class="emoji">🐻</span> Baggu</li>
+                <li><span class="emoji">🃏</span> Unclon ke saath patte</li>
+                <li><span class="emoji">💗</span> Bohot saara pyaar</li>
+                <li><span class="emoji">😭</span> Aur thoda zyada sorry</li>
+            </ul>
+            <p class="disclaimer-footer">Proceed karne ke liye Mumma ko button dabana padega.</p>
+            <button class="btn btn-secondary" id="disclaimerBtn">Okay, dikhao 👀</button>
+        </div>
+    </section>
+
+    <section id="apology" class="section">
+        <div class="glass-panel apology-card scroll-reveal">
+            <div class="heart-pulse-icon">❤️</div>
+            <h2>Okay... ab sach mein. 🥺</h2>
+            <div class="apology-content">
+                <p>Mumma, I’m genuinely sorry.</p>
+                <p>Mujhe pata hai mujhse galti hui hai.</p>
+                <p>Main apni galti ko justify nahi karna chahta.</p>
+                <p>Na koi excuse banana hai.</p>
+                <p class="emphasis">Bas dil se sorry bolna hai.</p>
+                <p>I know sirf sorry bolne se sab kuch instantly theek nahi hota.</p>
+                <p class="highlight-text">But I really mean it.</p>
+            </div>
+            <div class="gif-wrapper">
+                <img src="sorry.gif" alt="Sorry GIF" class="media-gif" onerror="this.style.display='none'; document.getElementById('sorry-fallback').style.display='block';">
+                <div id="sorry-fallback" class="emoji-fallback" style="display:none;">🥺👉👈</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="what-hurts" class="section dusk-theme">
+        <div class="content-container scroll-reveal">
+            <h2 class="handwritten-title">Mumma... ek baat sabse zyada hurt karti hai. 🥺</h2>
+            <div class="reveal-lines">
+                <p class="reveal-line">Aap mujhse baat kar rahi ho...</p>
+                <p class="reveal-line muted">and I’m thankful for that.</p>
+                <p class="reveal-line highlight-pink">Lekin... pehle jaisi baat nahi lag rahi.</p>
+                <div class="missing-grid">
+                    <div class="missing-chip">Woh random bakwaas...</div>
+                    <div class="missing-chip">Woh jokes...</div>
+                    <div class="missing-chip">Woh mera aapko irritate karna...</div>
+                    <div class="missing-chip">Woh aapka mujhe daantna...</div>
+                    <div class="missing-chip">Woh Baggu game...</div>
+                </div>
+                <h1 class="giant-text animate-pulse">I MISS ALL OF IT. ❤️</h1>
+                <p class="final-line">Mujhe meri normal Mumma chahiye.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="scrapbook" class="section">
+        <div class="section-header">
+            <h2 class="handwritten-heading">Memory Album 📸</h2>
+            <p>Our precious little moments together</p>
+        </div>
+        <div class="scrapbook-grid">
+            <div class="polaroid-frame tilt-left scroll-reveal" onclick="openLightbox('mumma-and-me-1.jpg', 'Me + Meri Mumma ❤️')">
+                <div class="photo-box">
+                    <img src="mumma-and-me-1.jpg" alt="Mumma and Me" onerror="this.onerror=null; this.src=''; this.parentElement.classList.add('photo-placeholder'); this.parentElement.innerHTML='📸<br><span>Mumma & Me photo</span>';">
+                </div>
+                <p class="caption">Me + Meri Mumma ❤️</p>
+            </div>
+            <div class="polaroid-frame tilt-right scroll-reveal" onclick="openLightbox('mumma-and-me-2.jpg', 'Ek aur random memory 😂')">
+                <div class="tape-strip corner-tape"></div>
+                <div class="photo-box">
+                    <img src="mumma-and-me-2.jpg" alt="Random memory" onerror="this.onerror=null; this.src=''; this.parentElement.classList.add('photo-placeholder'); this.parentElement.innerHTML='📸<br><span>Random Memory</span>';">
+                </div>
+                <p class="caption">Ek aur random memory 😂</p>
+            </div>
+            <div class="polaroid-frame tilt-left scroll-reveal" onclick="openLightbox('mumma-and-me-3.jpg', 'Hum dono kitne shareef lag rahe hain. 🤡')">
+                <div class="photo-box">
+                    <img src="mumma-and-me-3.jpg" alt="Shareef memory" onerror="this.onerror=null; this.src=''; this.parentElement.classList.add('photo-placeholder'); this.parentElement.innerHTML='📸<br><span>Sweet Memory</span>';">
+                </div>
+                <p class="caption">Hum dono kitne shareef lag rahe hain. 🤡</p>
+            </div>
+        </div>
+        <div class="scrapbook-footer scroll-reveal">
+            <p class="handwritten-sub">Proof ki main bachpan se annoying hoon, par ye moments bohot precious hain! ✨</p>
+        </div>
+    </section>
+
+    <section id="baggu-universe" class="section baggu-theme">
+        <div class="baggu-card glass-panel scroll-reveal">
+            <div class="card-pattern-bg"></div>
+            <h2 class="baggu-title">WAIT... BAGGU KA KYA? 🐻</h2>
+            <p class="subtitle">Mumma yaar... Baggu game plzzzzzz. 😭</p>
+            <p class="warning-text">Nahi toh pata hi hai...</p>
+            <div class="giant-warning animate-shake">
+                BAGGU PATTE KHELNE CHALA JAEGA UNCLON KE SAATH 🃏🐻😭
+            </div>
+            <div class="baggu-character-box">
+                <div class="baggu-avatar">🐻</div>
+                <div class="speech-bubble-container">
+                    <div class="speech-bubble" id="bagguSpeech">
+                        Mummaaaa game karoge? Main wait kar raha hoon... Zyada wait kiya toh unclon ke saath patte. 🃏
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="baggu-game" class="section">
+        <div class="game-container glass-panel scroll-reveal">
+            <h2>🎮 BAGGU GAME</h2>
+            <p class="game-sub">Save Baggu from the Uncles. 😂</p>
+            
+            <div class="game-stage">
+                <div class="baggu-actor" id="bagguActor">🐻</div>
+                <div class="uncle-actors" id="uncleActors" style="display: none;">🃏👴👴🃏</div>
+                <div class="game-dialogue" id="gameDialogue">
+                    "Mumma, please save me! Uncles form mein hain!"
+                </div>
+            </div>
+
+            <div class="game-controls">
+                <button class="btn btn-game btn-play" id="btnPlayBaggu">🎮 Play Baggu</button>
+                <button class="btn btn-game btn-hug" id="btnHugBaggu">❤️ Hug Baggu</button>
+                <button class="btn btn-game btn-uncles" id="btnSendUncles">🃏 Send to Uncles</button>
+            </div>
+            <div id="gameStatus" class="game-status-msg"></div>
+        </div>
+    </section>
+
+    <section id="classified" class="section">
+        <div class="classified-container scroll-reveal">
+            <h2 class="stamp-title">OUR VERY SERIOUS FAMILY ARCHIVES 😂</h2>
+            <div class="cards-grid">
+                <div class="classified-card">
+                    <div class="stamp-top-secret">CONFIDENTIAL</div>
+                    <h3>PADORI FILE</h3>
+                    <p class="status-label">Status: <span class="status-danger">Extremely Dangerous ⚠️</span></p>
+                    <p class="desc">Can randomly start scolding me out of nowhere with 100% accuracy.</p>
+                </div>
+                <div class="classified-card">
+                    <div class="stamp-top-secret">RESTRICTED</div>
+                    <h3>GASSY FILE</h3>
+                    <p class="status-label">Status: <span class="status-alert">Under Investigation 🚨</span></p>
+                    <p class="desc">Direct cause of 99% of household random bakwaas and laughter outbursts.</p>
+                </div>
+                <div class="classified-card">
+                    <div class="stamp-top-secret">TOP SECRET</div>
+                    <h3>PAAD DEPARTMENT</h3>
+                    <p class="status-label">Status: <span class="status-classified">CLASSIFIED 🔒</span></p>
+                    <p class="desc">Information strictly unavailable. Unauthorized access will result in extra chappal.</p>
+                </div>
+            </div>
+            <p class="archive-note">Okay bas. 😭 Website emotional thi, main phir se bakwaas pe aa gaya. 😂</p>
+        </div>
+    </section>
+
+    <section id="things-i-miss" class="section">
+        <div class="content-box glass-panel scroll-reveal">
+            <h2>Things I Miss About Us ❤️</h2>
+            <ul class="miss-list">
+                <li class="miss-item"><span>💬</span> Random conversations.</li>
+                <li class="miss-item"><span>😂</span> Your silly jokes.</li>
+                <li class="miss-item"><span>🐻</span> You making Baggu talk.</li>
+                <li class="miss-item"><span>🎲</span> Playing Baggu game.</li>
+                <li class="miss-item"><span>😜</span> My irritating you.</li>
+                <li class="miss-item"><span>🗣️</span> You scolding me.</li>
+                <li class="miss-item"><span>🤣</span> Laughing over absolutely stupid things.</li>
+                <li class="miss-item"><span>✨</span> Being normal.</li>
+            </ul>
+            <div class="miss-footer">
+                <h3>Basically... I miss US. 🥹</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="no-pressure" class="section">
+        <div class="paper-card scroll-reveal">
+            <h2>Mumma, main aapse kuch force nahi kar raha.</h2>
+            <div class="sincere-body">
+                <p>Main nahi chahta ki aap sirf ye website dekh kar turant mujhe forgive kar do.</p>
+                <p>Agar aap abhi bhi upset ho, I understand.</p>
+                <p>Agar aapko time chahiye, take your time.</p>
+                <p class="highlight-sincere">Main bas chahta hoon ki aapko pata ho... I’m genuinely sorry.</p>
+                <p>Main better karne ki koshish karunga.</p>
+                <p>Jab aap ready ho... please mujhe maaf kar dena.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="letter" class="section">
+        <div class="letter-paper scroll-reveal">
+            <div class="tape-strip top-left-tape"></div>
+            <div class="tape-strip top-right-tape"></div>
+            <h2 class="letter-title">Mumma, ek last baat... 💌</h2>
+            <div class="letter-body">
+                <p>Mumma,</p>
+                <p>Pata nahi main saamne se itna achhe se bol paunga ya nahi, isliye ye website bana di. 😭</p>
+                <p>I’m genuinely sorry. Mujhe pata hai mujhse galti hui hai. Main excuse nahi banana chahta. Bas itna kehna hai ki mujhe genuinely bura lag raha hai.</p>
+                <p>Mujhe aapke saath normal hona hai. Aapko irritate karna hai. Aapse random bakwaas karni hai. Aapke saath hasna hai. Baggu game khelna hai. Aapko Baggu ke dialogues bolte hue sunna hai. 😂🐻</p>
+                <p>Aur haan... Mumma yaar Baggu game plzzz. Nahi toh pata hi hai... Baggu patte khelne chala jaega unclon ke saath. 🃏😭</p>
+                <p>But seriously... I miss you. I miss our normal conversations. Mujhe woh distance bilkul pasand nahi hai.</p>
+                <p>I know cheezein ekdum se normal nahi hongi. And I don’t expect you to forget everything. I just want you to know that I’m sorry. Jab aap ready ho... please mujhe forgive kar dena.</p>
+                <p>I’ll try to do better.</p>
+                <p class="letter-sign">I love you, Mumma. ❤️<br><span>Your annoying son.</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="forgiveness" class="section">
+        <div class="forgiveness-card glass-panel scroll-reveal">
+            <h2>So... Mumma...</h2>
+            <p class="sub-heading">Can we start again? 🌷</p>
+            <p class="muted-text">Jab aap ready ho.</p>
+
+            <div class="choice-buttons">
+                <button class="btn btn-forgive" id="btnForgive">💗 Maaf Kiya</button>
+                <button class="btn btn-time" id="btnNeedTime">🌸 Thoda Time Chahiye</button>
+            </div>
+
+            <div id="forgivenessResult" class="result-box" style="display: none;"></div>
+        </div>
+    </section>
+
+    <div class="secret-container">
+        <button id="secretBtn" class="secret-btn">Psst... 👀</button>
+    </div>
+
+    <div id="secretModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content glass-panel">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div id="secretStepContent">
+                <h3>Ek secret baat...</h3>
+                <p id="secretText">Sorry Mumma. 🥺</p>
+                <button class="btn btn-small" id="secretNextBtn">Aage dekho</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay" style="display: none;" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img id="lightboxImg" src="" alt="Enlarged view">
+            <p id="lightboxCaption" class="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
