@@ -1,0 +1,868 @@
+/* ==========================================
+   CSS VARIABLES & DESIGN SYSTEM
+========================================== */
+:root {
+    --bg-cream: #fffaf5;
+    --bg-blush: #fde8ed;
+    --bg-lavender: #f2e9f9;
+    --bg-dusk: #2b2131;
+    --text-primary: #33272a;
+    --text-muted: #6b5c65;
+    --accent-pink: #ff758f;
+    --accent-rose: #ff4d6d;
+    --accent-purple: #9d4edd;
+    --accent-gold: #fbbf24;
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --card-border: rgba(255, 255, 255, 0.9);
+    --shadow-soft: 0 12px 32px rgba(230, 150, 170, 0.18);
+    --font-heading: 'Caveat', cursive;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-handwriting: 'Sacramento', cursive;
+}
+
+/* ==========================================
+   RESET & BASE STYLES
+========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    background-color: var(--bg-cream);
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.6;
+    background: radial-gradient(circle at 10% 20%, #ffeef2 0%, #f7f0ff 90%);
+    position: relative;
+}
+
+/* Background scene variations */
+body.bg-scene-1 {
+    background: radial-gradient(circle at 50% 10%, #fff0f3 0%, #f5e6fa 50%, #fff8f0 100%);
+}
+
+/* Dynamic CSS Paper texture pattern */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(#d4b2d8 0.65px, transparent 0.65px), radial-gradient(#fca5a5 0.65px, var(--bg-cream) 0.65px);
+    background-size: 26px 26px;
+    background-position: 0 0, 13px 13px;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ==========================================
+   LAYOUT & SECTIONS
+========================================== */
+.section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.glass-panel {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 36px 28px;
+    box-shadow: var(--shadow-soft);
+    max-width: 680px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+/* ==========================================
+   MUSIC PLAYER
+========================================== */
+.music-player-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 8px 16px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.music-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.music-wave {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+}
+
+.music-wave span {
+    width: 3px;
+    height: 100%;
+    background-color: var(--accent-pink);
+    border-radius: 3px;
+    animation: wave 1.2s infinite ease-in-out;
+    animation-play-state: paused;
+}
+
+.music-wave.playing span {
+    animation-play-state: running;
+}
+
+.music-wave span:nth-child(2) { animation-delay: 0.2s; }
+.music-wave span:nth-child(3) { animation-delay: 0.4s; }
+.music-wave span:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes wave {
+    0%, 100% { height: 4px; }
+    50% { height: 14px; }
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-rose));
+    color: white;
+    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(255, 77, 109, 0.45);
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: var(--text-primary);
+    border: 2px solid #f0ce3e;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    background: #fffbeb;
+}
+
+/* ==========================================
+   SECTION 1: HERO
+========================================== */
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    color: var(--accent-rose);
+    margin-bottom: 10px;
+}
+
+.hero-body {
+    margin: 15px 0;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+.subtitle.highlight {
+    font-weight: 700;
+    color: var(--accent-purple);
+}
+
+.text-body {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.tiny-note {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #998b95;
+    font-style: italic;
+}
+
+.doodle-star, .doodle-heart {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0.7;
+}
+
+.doodle-top-right { top: 15px; right: 20px; }
+.doodle-bottom-left { bottom: 15px; left: 20px; }
+
+/* ==========================================
+   SECTION 2: DISCLAIMER
+========================================== */
+.scrapbook-card {
+    background: #fffdf9;
+    border: 2px dashed #f3c2c6;
+    padding: 30px 24px;
+    border-radius: 16px;
+    position: relative;
+    max-width: 550px;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.tape-strip {
+    width: 120px;
+    height: 28px;
+    background: rgba(255, 235, 180, 0.65);
+    position: absolute;
+    transform: rotate(-3deg);
+    top: -14px;
+    left: 50%;
+    margin-left: -60px;
+    border: 1px rgba(200,180,120,0.3) solid;
+}
+
+.badge-warning {
+    display: inline-block;
+    background: #fef3c7;
+    color: #d97706;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.disclaimer-list {
+    list-style: none;
+    text-align: left;
+    margin: 20px 0;
+    padding: 0 10px;
+}
+
+.disclaimer-list li {
+    padding: 8px 0;
+    font-size: 1.05rem;
+    border-bottom: 1px stroke #f3f3f3;
+}
+
+.disclaimer-list .emoji {
+    margin-right: 8px;
+}
+
+/* ==========================================
+   SECTION 3: APOLOGY
+========================================== */
+.heart-pulse-icon {
+    font-size: 3rem;
+    animation: heartPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes heartPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+}
+
+.apology-content p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.apology-content .emphasis {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-rose);
+}
+
+.apology-content .highlight-text {
+    font-weight: 600;
+    color: var(--accent-purple);
+}
+
+.gif-wrapper {
+    margin-top: 20px;
+}
+
+.media-gif {
+    max-width: 200px;
+    border-radius: 12px;
+}
+
+.emoji-fallback {
+    font-size: 3rem;
+    margin-top: 10px;
+}
+
+/* ==========================================
+   SECTION 4: DUSK THEME (WHAT HURTS)
+========================================== */
+.dusk-theme {
+    background: linear-gradient(180deg, #2a1f31 0%, #3d2b48 100%);
+    color: #fce7f3;
+    width: 100%;
+}
+
+.handwritten-title {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    color: #f472b6;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.reveal-lines {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.reveal-line {
+    font-size: 1.2rem;
+    margin: 12px 0;
+}
+
+.reveal-line.muted { color: #cbd5e1; }
+.reveal-line.highlight-pink { color: #f472b6; font-weight: 700; }
+
+.missing-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.missing-chip {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+}
+
+.giant-text {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #fb7185;
+    margin: 30px 0 10px 0;
+}
+
+/* ==========================================
+   SECTION 5: SCRAPBOOK & PHOTOS
+========================================== */
+.handwritten-heading {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--accent-rose);
+    text-align: center;
+}
+
+.scrapbook-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 30px;
+    max-width: 900px;
+}
+
+.polaroid-frame {
+    background: #ffffff;
+    padding: 12px 12px 20px 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-radius: 4px;
+    width: 240px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.polaroid-frame:hover {
+    transform: scale(1.04) rotate(0deg) !important;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    z-index: 10;
+}
+
+.tilt-left { transform: rotate(-3deg); }
+.tilt-right { transform: rotate(3deg); }
+
+.photo-box {
+    width: 100%;
+    height: 200px;
+    background: #f3f4f6;
+    overflow: hidden;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-placeholder {
+    color: #9ca3af;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.caption {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 12px;
+    color: #4b5563;
+}
+
+.corner-tape {
+    top: -10px;
+    right: -20px;
+    width: 80px;
+    transform: rotate(30deg);
+}
+
+.handwritten-sub {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--accent-purple);
+    margin-top: 25px;
+    text-align: center;
+}
+
+/* ==========================================
+   SECTION 6 & 7: BAGGU UNIVERSE & GAME
+========================================== */
+.baggu-theme {
+    background: radial-gradient(circle, #fef3c7 0%, #fde68a 100%);
+    width: 100%;
+}
+
+.baggu-title {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    color: #b45309;
+}
+
+.giant-warning {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #dc2626;
+    background: #fee2e2;
+    padding: 12px;
+    border-radius: 12px;
+    margin: 20px 0;
+    border: 2px dashed #f87171;
+}
+
+.baggu-character-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.baggu-avatar {
+    font-size: 5rem;
+}
+
+.speech-bubble {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 14px 20px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    position: relative;
+    max-width: 320px;
+    margin-top: 10px;
+}
+
+.game-container {
+    max-width: 550px;
+}
+
+.game-stage {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 25px;
+    margin: 20px 0;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.baggu-actor {
+    font-size: 4rem;
+    transition: transform 0.3s ease;
+}
+
+.uncle-actors {
+    font-size: 2rem;
+    margin-top: 5px;
+}
+
+.game-dialogue {
+    font-weight: 600;
+    margin-top: 10px;
+    color: var(--text-primary);
+}
+
+.game-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-game {
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.btn-play { background: #4ade80; color: #14532d; }
+.btn-hug { background: #f472b6; color: #831843; }
+.btn-uncles { background: #cbd5e1; color: #334155; }
+
+.game-status-msg {
+    margin-top: 15px;
+    font-weight: 700;
+    color: var(--accent-purple);
+    min-height: 24px;
+}
+
+/* ==========================================
+   SECTION 8: CLASSIFIED ARCHIVES
+========================================== */
+.stamp-title {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    color: #1e293b;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 900px;
+}
+
+.classified-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    width: 250px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.stamp-top-secret {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.65rem;
+    font-weight: 900;
+    color: #ef4444;
+    border: 1px solid #ef4444;
+    padding: 2px 6px;
+    transform: rotate(12deg);
+    border-radius: 3px;
+}
+
+.status-label {
+    font-size: 0.85rem;
+    margin: 8px 0;
+}
+
+.status-danger { color: #dc2626; font-weight: 700; }
+.status-alert { color: #d97706; font-weight: 700; }
+.status-classified { color: #6b21a8; font-weight: 700; }
+
+.archive-note {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   SECTION 9: THINGS I MISS
+========================================== */
+.miss-list {
+    list-style: none;
+    text-align: left;
+    margin: 20px 0;
+}
+
+.miss-item {
+    padding: 10px 0;
+    border-bottom: 1px dashed #e5e7eb;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.miss-footer h3 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--accent-rose);
+    margin-top: 15px;
+}
+
+/* ==========================================
+   SECTION 10 & 11: SINCERE & LETTER
+========================================== */
+.paper-card {
+    background: #fffdfa;
+    border: 1px solid #f3e8ff;
+    padding: 35px;
+    border-radius: 18px;
+    max-width: 600px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    text-align: center;
+}
+
+.paper-card h2 {
+    font-size: 1.5rem;
+    color: var(--accent-purple);
+    margin-bottom: 20px;
+}
+
+.sincere-body p {
+    margin: 12px 0;
+    font-size: 1.05rem;
+}
+
+.highlight-sincere {
+    font-weight: 700;
+    color: var(--accent-rose);
+}
+
+.letter-paper {
+    background: #fffefb;
+    padding: 40px 30px;
+    border-radius: 4px;
+    max-width: 650px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    position: relative;
+    border-left: 4px solid #f472b6;
+}
+
+.top-left-tape { top: -12px; left: 20px; transform: rotate(-5deg); }
+.top-right-tape { top: -12px; right: 20px; transform: rotate(5deg); }
+
+.letter-title {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    color: var(--accent-rose);
+    margin-bottom: 20px;
+}
+
+.letter-body p {
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.letter-sign {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--accent-purple);
+    margin-top: 25px;
+}
+
+/* ==========================================
+   SECTION 12: FORGIVENESS
+========================================== */
+.forgiveness-card {
+    max-width: 550px;
+}
+
+.choice-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.btn-forgive {
+    background: #f43f5e;
+    color: white;
+}
+
+.btn-time {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.result-box {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    animation: fadeIn 0.5s ease;
+}
+
+/* ==========================================
+   SECRET & MODALS
+========================================== */
+.secret-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.secret-btn {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.modal-overlay, .lightbox-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+}
+
+.modal-close, .lightbox-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #94a3b8;
+}
+
+.lightbox-content img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 8px;
+}
+
+.lightbox-caption {
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+}
+
+/* ==========================================
+   ANIMATIONS & REVEAL
+========================================== */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+.animate-shake { animation: shake 2.5s infinite; }
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Responsive breakpoints */
+@media (max-width: 600px) {
+    .hero-title { font-size: 2.4rem; }
+    .handwritten-heading, .baggu-title { font-size: 2.4rem; }
+    .polaroid-frame { width: 100%; max-width: 280px; }
+    .choice-buttons { flex-direction: column; }
+    .btn { width: 100%; }
+}
