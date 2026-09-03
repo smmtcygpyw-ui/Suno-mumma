@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================
-       1. MUSIC PLAYER HANDLER
+       1. MUSIC PLAYER HANDLER (AUTOPLAY ON FIRST TAP)
     ========================================== */
     const bgAudio = document.getElementById('bgAudio');
     const musicToggle = document.getElementById('musicToggle');
@@ -9,21 +9,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicStatus = musicToggle.querySelector('.music-status');
     let isPlaying = false;
 
-    musicToggle.addEventListener('click', () => {
-        if (isPlaying) {
-            bgAudio.pause();
-            musicWave.classList.remove('playing');
-            musicStatus.textContent = "Play Music";
-            isPlaying = false;
-        } else {
+    function playAudio() {
+        if (!isPlaying) {
             bgAudio.play().then(() => {
                 musicWave.classList.add('playing');
                 musicStatus.textContent = "Playing";
                 isPlaying = true;
             }).catch(err => {
-                console.log("Audio playback error or file missing:", err);
-                alert("Audio file 'mom-song.mp3' missing or blocked by browser.");
+                console.log("Audio file missing or playback deferred:", err);
             });
+        }
+    }
+
+    function pauseAudio() {
+        bgAudio.pause();
+        musicWave.classList.remove('playing');
+        musicStatus.textContent = "Play Music";
+        isPlaying = false;
+    }
+
+    // Autoplay audio on the VERY FIRST tap/click anywhere on the page
+    const enableAudioOnFirstTouch = () => {
+        playAudio();
+        document.removeEventListener('click', enableAudioOnFirstTouch);
+        document.removeEventListener('touchstart', enableAudioOnFirstTouch);
+    };
+
+    document.addEventListener('click', enableAudioOnFirstTouch);
+    document.addEventListener('touchstart', enableAudioOnFirstTouch);
+
+    // Manual toggle button handling
+    musicToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevents conflict with global click listener
+        if (isPlaying) {
+            pauseAudio();
+        } else {
+            playAudio();
         }
     });
 
@@ -46,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
        3. NAVIGATION BUTTONS
     ========================================== */
     document.getElementById('openBtn').addEventListener('click', () => {
+        playAudio(); // Guarantees music starts when tapping opening button
         document.getElementById('disclaimer').scrollIntoView({ behavior: 'smooth' });
         createHeartBurst();
     });
@@ -65,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnPlayBaggu').addEventListener('click', () => {
         bagguActor.style.transform = "scale(1.3) rotate(10deg)";
         uncleActors.style.display = "none";
-        gameDialogue.textContent = '"YAYYYYY 😭🐻❤️ Mumma game shuru!"';
+        gameDialogue.textContent = '"YAYYYYY 😭🐻♥️ Mumma game shuru!"';
         gameStatus.textContent = 'Result: Baggu is extremely happy!';
         setTimeout(() => bagguActor.style.transform = "scale(1)", 500);
     });
@@ -73,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnHugBaggu').addEventListener('click', () => {
         bagguActor.style.transform = "scale(1.1)";
         uncleActors.style.display = "none";
-        gameDialogue.textContent = '"Baggu happy ho gaya! Big hug! 🥹🐻❤️"';
+        gameDialogue.textContent = '"Baggu happy ho gaya! Big hug! 🥹🐻♥️"';
         gameStatus.textContent = 'Result: Loved level 100%';
         setTimeout(() => bagguActor.style.transform = "scale(1)", 500);
     });
@@ -85,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
             uncleActors.style.display = "none";
-            gameDialogue.textContent = '"Wait... Mumma ko chhod ke nahi jaa sakta! 😂❤️"';
+            gameDialogue.textContent = '"Wait... Mumma ko chhod ke nahi jaa sakta! 😂♥️"';
             gameStatus.textContent = 'Result: Baggu returned to Mumma!';
         }, 2500);
     });
@@ -100,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnForgive.addEventListener('click', () => {
         forgivenessResult.style.display = "block";
         forgivenessResult.innerHTML = `
-            <h3 style="color: #e11d48; font-size: 1.8rem; margin-bottom: 10px;">MUMMAAAAAA 🥹❤️</h3>
+            <h3 style="color: #e11d48; font-size: 1.8rem; margin-bottom: 10px;">MUMMAAAAAA 🥹♥️</h3>
             <p style="font-size: 1.1rem;">Thank you so much!</p>
             <p style="font-weight: 700; margin-top: 8px;">Ab Baggu game karein? 🐻😂</p>
             <p style="color: #6b5c65; margin-top: 5px;">Main aapko phir se irritate kar sakta hoon? 😭</p>
@@ -111,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnNeedTime.addEventListener('click', () => {
         forgivenessResult.style.display = "block";
         forgivenessResult.innerHTML = `
-            <h3 style="color: #7c3aed; font-size: 1.5rem; margin-bottom: 10px;">Okay Mumma. ❤️</h3>
+            <h3 style="color: #7c3aed; font-size: 1.5rem; margin-bottom: 10px;">Okay Mumma. 💗</h3>
             <p style="font-size: 1.05rem;">Take your time. Main samajhta hoon.</p>
             <p style="margin-top: 8px;">Bas ek cheez yaad rakhna...</p>
             <p style="font-weight: 700; color: #db2777; font-size: 1.2rem; margin-top: 5px;">I love you!</p>
@@ -130,9 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let secretStep = 0;
     const secretSteps = [
         "Sorry Mumma. 🥺",
-        "Okay last time... Sorryyyyyyyyyyy. 😭❤️",
+        "Okay last time... Sorryyyyyyyyyyy. 😭💗",
         "Okay genuinely last time.",
-        "Love you, Padori! 😂❤️"
+        "Love you, Padori! 😂♥️"
     ];
 
     secretBtn.addEventListener('click', () => {
